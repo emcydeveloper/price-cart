@@ -1,0 +1,17 @@
+.menu-Container,.display-items-container-flex,.side-items-container-flex{
+    border: 2px solid pink;
+}
+
+.items-cointainer-flex{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.side-items-container-flex{
+    flex:1;
+}
+
+.display-items-container-flex{
+flex:5;
+}
+
