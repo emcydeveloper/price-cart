@@ -3,56 +3,101 @@ import "./Style.css";
 import { DisplayItems } from "./DisplayItems";
 import { Menu } from "./Menu";
 import { SideItems } from "./SideItems";
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
 
 function App() {
-  const proImage = "https://m.media-amazon.com/images/I/71362ty8qSL._AC_UL320_.jpg";
-  const proName = "Rust Cleaner";
-  const proRatings = "4.5";
-  const proSummary = "Clenom Powerful Rust Remover Spray for Iron, Alloy, Metal, Rust Cleaning & Protection for Car, Motorcycle, Motor Bike, Kitchen & House (500 ml)";
-  const proPrice = "195";
+  const productItems = [
+    {
+      proImage:
+        "https://m.media-amazon.com/images/I/71r69Y7BSeL._AC_UL320_.jpg",
+      proName: "Galaxy M12",
+      proRatings: "8",
+      proSummary:
+        "Samsung Galaxy M12 (Black,4GB RAM, 64GB Storage) 6000 mAh with 8nm Processor | True 48 MP Quad Camera | 90Hz Refresh Rate",
+      proPrice: "11,499",
+    },
+    {
+      proImage: "https://m.media-amazon.com/images/I/81vDZyJQ-4L._AC_UL320_.jpg",
+      proName: "Samsung Galaxy S20 FE 5G",
+      proRatings: "8",
+      proSummary: "Samsung Galaxy S20 FE 5G (Cloud Navy, 8GB RAM, 128GB Storage) with No Cost EMI & Additional Exchange Offers",
+      proPrice: "39,990",
+    },
+    {
+      proImage: "https://m.media-amazon.com/images/I/61--zZV5y-L._AC_UL320_.jpg",
+      proName: "Samsung Guru Music 2",
+      proRatings: "6",
+      proSummary: "Samsung Guru Music 2 (SM-B310E, Black)",
+      proPrice: "2,235",
+    },
+    {
+      proImage: "https://m.media-amazon.com/images/I/71YlH-4MUQL._AC_UL320_.jpg",
+      proName: "Apple iPhone 12 Pro",
+      proRatings: "8",
+      proSummary: "Apple iPhone 12 Pro (256GB) - Graphite",
+      proPrice: "50,000",
+    },
+    {
+      proImage: "https://m.media-amazon.com/images/I/61sDyXAepuL._AC_UL320_.jpg",
+      proName: "Apple iPhone 13",
+      proRatings: "8",
+      proSummary: "Apple iPhone 13 Pro (128GB) - Gold",
+      proPrice: "99,000",
+    },
+    // {
+    //   proImage: "",
+    //   proName: "myName",
+    //   proRatings: "8",
+    //   proSummary: "Am summary",
+    //   proPrice: "99",
+    // },
+    // {
+    //   proImage: "",
+    //   proName: "myName",
+    //   proRatings: "8",
+    //   proSummary: "Am summary",
+    //   proPrice: "99",
+    // },
+    // {
+    //   proImage: "",
+    //   proName: "myName",
+    //   proRatings: "8",
+    //   proSummary: "Am summary",
+    //   proPrice: "99",
+    // },
+    // {
+    //   proImage: "",
+    //   proName: "myName",
+    //   proRatings: "8",
+    //   proSummary: "Am summary",
+    //   proPrice: "99",
+    // },
+  ];
 
   return (
     <div className="App">
-      <Button variant="contained">Hello World</Button>
-      <MediaCard />
+      {/* <Button variant="contained">Hello World</Button> */}
       <Menu />
+
       <div className="items-cointainer-flex">
-      <SideItems />
-      <DisplayItems proImage={proImage} proName={proName} proRatings={proRatings} proSummary={proSummary} proPrice={proPrice} />
+        <div className="side-items-container-flex">
+          <SideItems />
+        </div>
+
+        <div className="display-items-container-flex">
+          {productItems.map((itms, index) => (
+            <DisplayItems
+              key={index}
+              proImage={itms.proImage}
+              proName={itms.proName}
+              proRatings={itms.proRatings}
+              proSummary={itms.proSummary}
+              proPrice={itms.proPrice}
+            />
+          ))}
+        </div>
       </div>
     </div>
-  );
-}
-
-function MediaCard() {
-  return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://m.media-amazon.com/images/I/71362ty8qSL._AC_UL320_.jpg"
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
   );
 }
 
