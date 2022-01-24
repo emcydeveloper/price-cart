@@ -23,6 +23,7 @@ export function DisplayItems({key, proImage, proName, proRatings, proSummary, pr
       </CardContent>
       <CardActions>
         <p className="btn-price"><span className="a-price-symbol">₹</span>{proPrice}</p>
+        <br></br>
         <Button className="btn-cart" size="small">Add to cart</Button>
       </CardActions>
     </Card>
