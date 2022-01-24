@@ -29,7 +29,7 @@
 	width: 300px;
 	text-align: center;
 	padding:3px;
-	
+	height: min-content !important;	
 }
 
 .btn-price{
@@ -93,5 +93,5 @@
 }
 
 .display-items-card{
-/* height: min-content !important;	 */
+
 }
