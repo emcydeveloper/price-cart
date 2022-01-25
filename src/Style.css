@@ -55,10 +55,6 @@
   /* padding-top: 0px !important; */
 }
 
-/* .css-46bh2p-MuiCardContent-root{
-    padding-bottom: 0px !important;
-} */
-
 .a-price-symbol {
   top: -0.5em;
   font-size: 30px;
@@ -78,10 +74,6 @@
   text-align: left;
   padding: 5px;
 }
-
-/* .side-list{
-	
-} */
 
 .btn-sideitem-list:hover {
   background-color: #1976d2;
@@ -106,4 +98,21 @@
 
 .item-view-info{
   font-size: 20px !important;
+}
+
+.menu-Container{
+  height:40px;
+}
+
+.menu-Container{
+  display: flex;
+  flex-direction: row;
+  /* background-color:rgb(63, 61, 61);
+  color:white; */
+  justify-content: space-between;
+}
+
+.shop-Cart{
+  font-size: xx-large !important;
+  margin-right: 20px !important;
 }
