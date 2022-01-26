@@ -116,3 +116,18 @@
   font-size: xx-large !important;
   margin-right: 20px !important;
 }
+
+.product-container{
+  display:flex;
+  flex-direction:column;
+}
+
+.pro-img-details{
+  display: flex;
+  flex-direction:row;
+}
+
+.pro-info{
+  display:flex;
+  flex-direction:column;
+}

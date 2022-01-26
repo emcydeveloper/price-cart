@@ -1,6 +1,6 @@
 import "./Style.css";
 import Button from "@mui/material/Button";
-
+import { useHistory } from "react-router-dom";
 
 export function DisplayItems({
   index,
@@ -13,7 +13,7 @@ export function DisplayItems({
   cartVal,
 }) {
 
-
+  const viewDetails = useHistory();
 
   return (
     <div className="display-items-flex" key={index}>
@@ -28,7 +28,9 @@ export function DisplayItems({
       >
         Add to cart
       </Button>
-      <Button className="item-view-info">View Product</Button>
+      <Button className="item-view-info" onClick={()=>{
+        viewDetails.push("productdetails/"+index)
+      }}>View Product</Button>
       <h1>{proName}</h1>
       <p className="btn-price">
         <span className="a-price-symbol">₹</span>
@@ -40,3 +42,4 @@ export function DisplayItems({
     </div>
   );
 }
+

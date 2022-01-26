@@ -1,11 +1,11 @@
 // import './App.css';
 import "./Style.css";
-import { DisplayItems } from "./DisplayItems";
 import { Menu } from "./Menu";
-import { SideItems } from "./SideItems";
 import { useState } from "react";
 // import Button from '@mui/material/Button';
-import { Switch, Route, useParams, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { HomePage } from "./HomePage";
+import { ViewProductInfo } from "./ViewProductInfo";
 
 function App() {
   const productItems = [
@@ -84,54 +84,30 @@ function App() {
 
   return (
     <div className="App">
-      
-      <ul>
-        {/* <li>
-          <Link to="/cartitems">cartitesm</Link>
-        </li> */}
-        <li>
-          <Link to="/home">home</Link>
-        </li>
-      </ul>
       <Switch>
-      <Route path="/cartitems/:index">
-          <h1>testingdddd</h1>
-          <Cartitems />
+        <Route path="/productdetails/:index">
+          <ViewProductInfo productList={productItems} />
         </Route>
-        
+
         <Route path="/home">
           <Menu cartVal={cartVal} />
-
-          <div className="items-cointainer-flex">
-            <div className="side-items-container-flex">
-              <SideItems />
-            </div>
-
-            <div className="display-items-container-flex">
-              {productItems.map((itms, index) => (
-                <DisplayItems
-                  index={index}
-                  proImage={itms.proImage}
-                  proName={itms.proName}
-                  proRatings={itms.proRatings}
-                  proSummary={itms.proSummary}
-                  proPrice={itms.proPrice}
-                  setCartVal={setCartVal}
-                  cartVal={cartVal}
-                />
-              ))}
-            </div>
-          </div>
+          <HomePage
+            productItems={productItems}
+            cartVal={cartVal}
+            setCartVal={setCartVal}
+          />
+        </Route>
+        <Route path="/">
+          <Menu cartVal={cartVal} />
+          <HomePage
+            productItems={productItems}
+            cartVal={cartVal}
+            setCartVal={setCartVal}
+          />
         </Route>
       </Switch>
-      {/* <Button variant="contained">Hello World</Button> */}
     </div>
   );
-}
-
-function Cartitems() {
-  const { index } = useParams();
-  return <div>test {index}</div>;
 }
 
 export default App;
