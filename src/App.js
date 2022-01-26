@@ -86,7 +86,12 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/productdetails/:index">
-          <ViewProductInfo productList={productItems} />
+        <Menu cartVal={cartVal} />
+          <ViewProductInfo
+            productList={productItems}
+            cartVal={cartVal}
+            setCartVal={setCartVal}
+          />
         </Route>
 
         <Route path="/home">

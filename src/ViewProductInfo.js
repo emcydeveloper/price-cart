@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
+import Button from "@mui/material/Button";
+import { LoremIpsum } from "react-lorem-ipsum";
 
-export function ViewProductInfo(getProductList) {
+export function ViewProductInfo({ productList, cartVal, setCartVal }) {
   const { index } = useParams();
-  const { productList } = getProductList;
+
   const getProduct = productList[index];
   return (
     <div className="product-container">
-      Viewing Product Info - {index} + {getProduct.proName}
       <div className="pro-img-details">
         <div className="pro-image">
           <img
@@ -16,11 +17,31 @@ export function ViewProductInfo(getProductList) {
           ></img>
         </div>
         <div className="pro-info">
-          <div>{getProduct.proName}</div>
+          <div>
+            <h1>{getProduct.proName}</h1>
+          </div>
           <div>{getProduct.proRatings}</div>
-          <div>{getProduct.proSummary}</div>
-          <div>{getProduct.proPrice}</div>
-          <div>add to card</div>
+          <div>
+            <p className="btn-price">
+              <span className="a-price-symbol">₹</span>
+              {getProduct.proPrice}
+            </p>
+          </div>
+          <div>
+            <Button
+              className="btn-cart"
+              onClick={() => {
+                setCartVal(cartVal + 1);
+              }}
+            >
+              Add to cart
+            </Button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <p><h2>{getProduct.proName}</h2> <LoremIpsum /><LoremIpsum /><LoremIpsum /></p>
         </div>
       </div>
     </div>

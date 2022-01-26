@@ -1,26 +1,24 @@
 import "./Style.css";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import MailIcon from "@mui/icons-material/Mail";
 import { useHistory } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 
 export function Menu({cartVal}) {
-  const cartitems = useHistory();
-  let index = 1;
+ const homeLink = useHistory();
 
   return (
     <div className="menu-Container">
-      <div className="test">
-        <Badge badgeContent={cartVal} color="primary">
-          <MailIcon color="action" />
-        </Badge>
+      <div className="home-icon">
+        <button className="btn-contain" onClick={()=>{
+          homeLink.push("/home")
+          // <p> You were redirected from {location.state.from}</p>
+          }}><HomeIcon fontSize="large" sx={{ fontSize: 40 }} /></button>
+      
       </div>
       <div className="shop-Cart">
-        <button onClick={() => {
-          cartitems.push("/cartitems/"+index)
-        }}>click me</button>
         <Badge badgeContent={cartVal} color="primary">
-          <ShoppingCartIcon />
+          <ShoppingCartIcon fontSize="large" />
         </Badge>
       </div>
     </div>
