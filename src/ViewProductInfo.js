@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import { LoremIpsum } from "react-lorem-ipsum";
 
-export function ViewProductInfo({ productList, cartVal, setCartVal,setCartItems,cartItems }) {
+export function ViewProductInfo({ productList, cartInfo, setcartInfo }) {
+  // cartVal, setCartVal,
   const { index } = useParams();
 
   const getProduct = productList[index];
 
-
+console.log(cartInfo);
   
   return (
     <div className="product-container">
@@ -38,8 +39,7 @@ export function ViewProductInfo({ productList, cartVal, setCartVal,setCartItems,
             <button
               className="btn-cart"
               onClick={() => {
-                setCartVal(cartVal + 1);
-                setCartItems([...cartItems,getProduct])
+                setcartInfo([...cartInfo,index])
               }}
             >
               Add to cart

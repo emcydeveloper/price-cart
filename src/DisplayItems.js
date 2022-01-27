@@ -5,13 +5,11 @@ import { useHistory } from "react-router-dom";
 export function DisplayItems({
   index,
   displayList,
-  setCartVal,
-  cartVal,
-  setCartItems,cartItems
+  cartInfo, setcartInfo
 }) {
 
   const viewDetails = useHistory();
- 
+//  console.log(cartInfo)
 
   return (
     <div className="display-items-flex" key={index}>
@@ -21,10 +19,7 @@ export function DisplayItems({
       <button
         className="btn-cart"
         onClick={() => {
-     
-
-          setCartVal(cartVal + 1);
-          setCartItems([...cartItems,displayList])
+          setcartInfo([...cartInfo,index])
         }}
       >
         Add to cart

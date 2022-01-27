@@ -80,51 +80,46 @@ function App() {
     //   proPrice: "99",
     // },
   ];
-  const [cartVal, setCartVal] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+  
+  // const [cartItems, setCartItems] = useState([]);
+  const [cartInfo, setcartInfo] = useState([]);
+
+// console.log(cartInfo);
 
   return (
     <div className="App">
       <Switch>
         <Route path="/productdetails/:index">
-          <Menu cartVal={cartVal} />
+          <Menu cartVal={cartInfo.length} />
           <ViewProductInfo
             productList={productItems}
-            cartVal={cartVal}
-            setCartVal={setCartVal}
-            setCartItems={setCartItems}
-            cartItems={cartItems}
+            cartInfo={cartInfo}
+            setcartInfo={setcartInfo}
           />
         </Route>
 
         <Route path="/cartitems">
-          <Menu cartVal={cartVal} />
+          <Menu cartVal={cartInfo.length} />
           <CartItems
-            getCartItems={cartItems}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            cartVal={cartVal}
+            getCartItems={cartInfo}
+            cartVal={cartInfo.length}
           />
         </Route>
 
         <Route path="/home">
-          <Menu cartVal={cartVal} />
+          <Menu cartVal={cartInfo.length} />
           <HomePage
             productItems={productItems}
-            cartVal={cartVal}
-            setCartVal={setCartVal}
-            setCartItems={setCartItems}
-            cartItems={cartItems}
+            cartInfo={cartInfo}
+            setcartInfo={setcartInfo}
           />
         </Route>
         <Route path="/">
-          <Menu cartVal={cartVal} />
+          <Menu cartVal={cartInfo.length} />
           <HomePage
             productItems={productItems}
-            cartVal={cartVal}
-            setCartVal={setCartVal}
-            setCartItems={setCartItems}
-            cartItems={cartItems}
+            cartInfo={cartInfo}
+            setcartInfo={setcartInfo}
           />
         </Route>
       </Switch>
@@ -132,13 +127,13 @@ function App() {
   );
 }
 
-function CartItems({ getCartItems, cartItems, setCartItems, cartVal }) {
+function CartItems({ getCartItems, cartVal }) {
   return (
     <div className="cart-container">
       <h1>Total items in cart - {cartVal}</h1>
-      {getCartItems.map((itms, index) => (
+      {/* {getCartItems.map((itms, index) => (
         <DisplayCartItems cartList={itms} index={index} />
-      ))}
+      ))} */}
     </div>
   );
 }
