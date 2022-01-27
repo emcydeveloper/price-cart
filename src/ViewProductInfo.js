@@ -1,13 +1,20 @@
 import { useParams } from "react-router-dom";
-import Button from "@mui/material/Button";
 import { LoremIpsum } from "react-lorem-ipsum";
 
-export function ViewProductInfo({ productList, cartVal, setCartVal }) {
+export function ViewProductInfo({ productList, cartVal, setCartVal,setCartItems,cartItems }) {
   const { index } = useParams();
 
   const getProduct = productList[index];
+
+
+  
   return (
     <div className="product-container">
+
+      
+  
+      {/* <h2>value = {cartItems[0]}</h2> */}
+      
       <div className="pro-img-details">
         <div className="pro-image">
           <img
@@ -28,20 +35,22 @@ export function ViewProductInfo({ productList, cartVal, setCartVal }) {
             </p>
           </div>
           <div>
-            <Button
+            <button
               className="btn-cart"
               onClick={() => {
                 setCartVal(cartVal + 1);
+                setCartItems([...cartItems,getProduct])
               }}
             >
               Add to cart
-            </Button>
+            </button>
           </div>
         </div>
       </div>
       <div>
         <div>
-          <p><h2>{getProduct.proName}</h2> <LoremIpsum /><LoremIpsum /><LoremIpsum /></p>
+          <h2>{getProduct.proName}</h2>
+          <LoremIpsum /><LoremIpsum /><LoremIpsum />
         </div>
       </div>
     </div>

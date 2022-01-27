@@ -1,43 +1,44 @@
 import "./Style.css";
-import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
+
 
 export function DisplayItems({
   index,
-  proImage,
-  proName,
-  proRatings,
-  proSummary,
-  proPrice,
+  displayList,
   setCartVal,
   cartVal,
+  setCartItems,cartItems
 }) {
 
   const viewDetails = useHistory();
+ 
 
   return (
     <div className="display-items-flex" key={index}>
       {/* <Card className="display-items-card"> */}
 
-      <img className="item-image" alt={proName} src={proImage}></img>
-      <Button
+      <img className="item-image" alt={displayList.proName} src={displayList.proImage}></img>
+      <button
         className="btn-cart"
         onClick={() => {
+     
+
           setCartVal(cartVal + 1);
+          setCartItems([...cartItems,displayList])
         }}
       >
         Add to cart
-      </Button>
-      <Button className="item-view-info" onClick={()=>{
+      </button>
+      <button className="item-view-info" onClick={()=>{
         viewDetails.push("productdetails/"+index)
-      }}>View Product</Button>
-      <h1>{proName}</h1>
+      }}>View Product</button>
+      <h1>{displayList.proName}</h1>
       <p className="btn-price">
         <span className="a-price-symbol">₹</span>
-        {proPrice}
+        {displayList.proPrice}
       </p>
-      <p>{proRatings}</p>
-      <div>{proSummary}</div>
+      <p>{displayList.proRatings}</p>
+      <div>{displayList.proSummary}</div>
       {/* </Card> */}
     </div>
   );

@@ -81,16 +81,29 @@ function App() {
     // },
   ];
   const [cartVal, setCartVal] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
   return (
     <div className="App">
       <Switch>
         <Route path="/productdetails/:index">
-        <Menu cartVal={cartVal} />
+          <Menu cartVal={cartVal} />
           <ViewProductInfo
             productList={productItems}
             cartVal={cartVal}
             setCartVal={setCartVal}
+            setCartItems={setCartItems}
+            cartItems={cartItems}
+          />
+        </Route>
+
+        <Route path="/cartitems">
+          <Menu cartVal={cartVal} />
+          <CartItems
+            getCartItems={cartItems}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            cartVal={cartVal}
           />
         </Route>
 
@@ -100,6 +113,8 @@ function App() {
             productItems={productItems}
             cartVal={cartVal}
             setCartVal={setCartVal}
+            setCartItems={setCartItems}
+            cartItems={cartItems}
           />
         </Route>
         <Route path="/">
@@ -108,6 +123,8 @@ function App() {
             productItems={productItems}
             cartVal={cartVal}
             setCartVal={setCartVal}
+            setCartItems={setCartItems}
+            cartItems={cartItems}
           />
         </Route>
       </Switch>
@@ -115,4 +132,27 @@ function App() {
   );
 }
 
+function CartItems({ getCartItems, cartItems, setCartItems, cartVal }) {
+  return (
+    <div className="cart-container">
+      <h1>Total items in cart - {cartVal}</h1>
+      {getCartItems.map((itms, index) => (
+        <DisplayCartItems cartList={itms} index={index} />
+      ))}
+    </div>
+  );
+}
+
+function DisplayCartItems({ cartList, index }) {
+
+  return (
+    <div className="item-container">
+      {/* <div>{index}</div> */}
+      <div>{cartList.proName}</div>
+      <div>{cartList.proPrice}</div>
+
+      {/* {cartList.proImage} */}
+    </div>
+  );
+}
 export default App;

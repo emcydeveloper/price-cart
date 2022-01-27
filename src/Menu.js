@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 export function Menu({cartVal}) {
  const homeLink = useHistory();
+ const cartLink = useHistory();
 
   return (
     <div className="menu-Container">
@@ -17,9 +18,14 @@ export function Menu({cartVal}) {
       
       </div>
       <div className="shop-Cart">
+        <button className="btn-contain" onClick={()=>{
+          cartLink.push("/cartitems")
+          // <p> You were redirected from {location.state.from}</p>
+          }}>
         <Badge badgeContent={cartVal} color="primary">
           <ShoppingCartIcon fontSize="large" />
         </Badge>
+        </button>
       </div>
     </div>
   );
