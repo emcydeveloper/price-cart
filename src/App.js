@@ -80,11 +80,9 @@ function App() {
     //   proPrice: "99",
     // },
   ];
-  
+
   // const [cartItems, setCartItems] = useState([]);
   const [cartInfo, setcartInfo] = useState([]);
-
-// console.log(cartInfo);
 
   return (
     <div className="App">
@@ -100,10 +98,7 @@ function App() {
 
         <Route path="/cartitems">
           <Menu cartVal={cartInfo.length} />
-          <CartItems
-            getCartItems={cartInfo}
-            cartVal={cartInfo.length}
-          />
+          <CartItems cartInfo={cartInfo} setcartInfo={setcartInfo} />
         </Route>
 
         <Route path="/home">
@@ -127,27 +122,36 @@ function App() {
   );
 }
 
-function CartItems({ getCartItems, cartVal }) {
+function CartItems({ cartInfo,setcartInfo }) {
+const [delete, setDelete]=useState();
+
+  function deleteMe(id){
+console.log(id);
+  }
   return (
     <div className="cart-container">
-      <h1>Total items in cart - {cartVal}</h1>
-      {/* {getCartItems.map((itms, index) => (
-        <DisplayCartItems cartList={itms} index={index} />
-      ))} */}
+      <h1>Total items in cart - {cartInfo.length}</h1>
+      <table>
+        {/* <tr>
+          <th>Image</th>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Delete</th>
+        </tr> */}
+        {cartInfo.map((cartList) => (
+          <tr>
+          <td><img className="cart-image" alt="product" src={cartList.proImage}></img></td>
+          <td>{cartList.index}</td>
+          <td>{cartList.proName}</td>
+          <td>{cartList.proPrice}</td>
+          <td><button onClick={()=> deleteMe(cartList.index)}>DeletMe!</button></td>
+          </tr>
+          // <DisplayCartItems cartList={itms} />
+        ))}
+      </table>
     </div>
   );
 }
 
-function DisplayCartItems({ cartList, index }) {
-
-  return (
-    <div className="item-container">
-      {/* <div>{index}</div> */}
-      <div>{cartList.proName}</div>
-      <div>{cartList.proPrice}</div>
-
-      {/* {cartList.proImage} */}
-    </div>
-  );
-}
 export default App;

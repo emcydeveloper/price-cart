@@ -160,6 +160,24 @@
   border: dotted 0.5px blue;
 }
 
+table{
+  /* border: 1px dotted black; */
+  border-collapse: collapse;
+  width:max-content;
+}
+
+th, td {
+  border: 1px dotted black;
+  
+  padding: 15px;
+  /* margin: 10px; */
+  /* border-radius: 10px; */
+  /* border-style:dotted; */
+}
+
+.cart-image{
+  size:10px;
+}
 .item-view-info,
 .shop-Cart,
 .btn-contain,.btn-cart:hover {

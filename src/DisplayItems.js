@@ -11,6 +11,8 @@ export function DisplayItems({
   const viewDetails = useHistory();
 //  console.log(cartInfo)
 
+displayList.index=index;
+
   return (
     <div className="display-items-flex" key={index}>
       {/* <Card className="display-items-card"> */}
@@ -19,7 +21,7 @@ export function DisplayItems({
       <button
         className="btn-cart"
         onClick={() => {
-          setcartInfo([...cartInfo,index])
+          setcartInfo([...cartInfo,displayList])
         }}
       >
         Add to cart

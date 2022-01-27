@@ -6,8 +6,8 @@ export function ViewProductInfo({ productList, cartInfo, setcartInfo }) {
   const { index } = useParams();
 
   const getProduct = productList[index];
+  getProduct.index=index;
 
-console.log(cartInfo);
   
   return (
     <div className="product-container">
@@ -39,7 +39,7 @@ console.log(cartInfo);
             <button
               className="btn-cart"
               onClick={() => {
-                setcartInfo([...cartInfo,index])
+                setcartInfo([...cartInfo,getProduct])
               }}
             >
               Add to cart

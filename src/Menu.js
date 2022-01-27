@@ -20,7 +20,6 @@ export function Menu({cartVal}) {
       <div className="shop-Cart">
         <button className="btn-contain" onClick={()=>{
           cartLink.push("/cartitems")
-          // <p> You were redirected from {location.state.from}</p>
           }}>
         <Badge badgeContent={cartVal} color="primary">
           <ShoppingCartIcon fontSize="large" />
