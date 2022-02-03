@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { HomePage } from "./HomePage";
 import { ViewProductInfo } from "./ViewProductInfo";
+import { CartItems } from "./CartItems";
 
 function App() {
   const productItems = [
@@ -81,7 +82,6 @@ function App() {
     // },
   ];
 
-  // const [cartItems, setCartItems] = useState([]);
   const [cartInfo, setcartInfo] = useState([]);
 
   return (
@@ -118,53 +118,6 @@ function App() {
           />
         </Route>
       </Switch>
-    </div>
-  );
-}
-
-function CartItems({ cartInfo, setcartInfo }) {
-  // console.log(cartInfo);
-
-  return (
-    <div className="cart-container">
-      <h1>Total items in cart - {cartInfo.length}</h1>
-      <table>
-        {/* <tr>
-          <th>Image</th>
-          <th>Index</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Delete</th>
-        </tr> */}
-        {cartInfo.map((cartList, carin) => (
-          <tr>
-            <td>
-              <img
-                className="cart-image"
-                alt="product"
-                src={cartList.proImage}
-              ></img>
-            </td>
-            <td>{cartList.index}</td>
-            <td>{cartList.proName}</td>
-            <td>{cartList.proPrice}</td>
-            <td>
-              <button
-                onClick={() => {
-                  const remaniningList = cartInfo.filter((movie,idx) => {
-                    const removePrd = carin;
-                    return idx !== removePrd;
-                  });
-                  setcartInfo(remaniningList)
-                }}
-              >
-                DeletMe!
-              </button>
-            </td>
-          </tr>
-          // <DisplayCartItems cartList={itms} />
-        ))}
-      </table>
     </div>
   );
 }
