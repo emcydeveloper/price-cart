@@ -122,12 +122,9 @@ function App() {
   );
 }
 
-function CartItems({ cartInfo,setcartInfo }) {
-const [delete, setDelete]=useState();
+function CartItems({ cartInfo, setcartInfo }) {
+  // console.log(cartInfo);
 
-  function deleteMe(id){
-console.log(id);
-  }
   return (
     <div className="cart-container">
       <h1>Total items in cart - {cartInfo.length}</h1>
@@ -139,13 +136,31 @@ console.log(id);
           <th>Price</th>
           <th>Delete</th>
         </tr> */}
-        {cartInfo.map((cartList) => (
+        {cartInfo.map((cartList, carin) => (
           <tr>
-          <td><img className="cart-image" alt="product" src={cartList.proImage}></img></td>
-          <td>{cartList.index}</td>
-          <td>{cartList.proName}</td>
-          <td>{cartList.proPrice}</td>
-          <td><button onClick={()=> deleteMe(cartList.index)}>DeletMe!</button></td>
+            <td>
+              <img
+                className="cart-image"
+                alt="product"
+                src={cartList.proImage}
+              ></img>
+            </td>
+            <td>{cartList.index}</td>
+            <td>{cartList.proName}</td>
+            <td>{cartList.proPrice}</td>
+            <td>
+              <button
+                onClick={() => {
+                  const remaniningList = cartInfo.filter((movie,idx) => {
+                    const removePrd = carin;
+                    return idx !== removePrd;
+                  });
+                  setcartInfo(remaniningList)
+                }}
+              >
+                DeletMe!
+              </button>
+            </td>
           </tr>
           // <DisplayCartItems cartList={itms} />
         ))}
